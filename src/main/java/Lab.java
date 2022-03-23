@@ -14,6 +14,13 @@ public class Lab {
     public static void main(String[] args){
         PrintBinary.printBinary(54);
 
+        log.info("-----------------------------------------------------");
+        log.info("最大整数： {}", Integer.MAX_VALUE);
+        PrintBinary.printBinary(Integer.MAX_VALUE);
+        PrintBinary.printBinary(Integer.MIN_VALUE);
+        log.info("最小整数： {}", Integer.MIN_VALUE);
+        log.info("最小整数左移2位： {}", Integer.MIN_VALUE - 10 << 2);
+
 
     }
 }
