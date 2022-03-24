@@ -49,4 +49,28 @@ public class TestLab {
         Talent.iCanSpeak();
     }
 
+    @Test
+    public void testOneMinIndex() {
+        int maxLen = 30;
+        int maxValue = 100;
+        int testTime = 1000000;
+        log.info("开始测试");
+        int mark = 10;
+        for(int i = 0; i < testTime; i++ ) {
+            int[] arr = Dichotomy.randomArray(maxLen, maxValue);
+            int ans = Dichotomy.oneMinIndex(arr);
+            if (!Dichotomy.check(arr, ans)) {
+                log.info("数组：{}", arr);
+                log.info("出问题的地方：{}", ans);
+                break;
+            }
+            if (i == mark) {
+                log.info("数组：{}", arr);
+                log.info("局部最小位置：{}", ans);
+            }
+        }
+        log.info("开始结束");
+
+    }
+
 }
