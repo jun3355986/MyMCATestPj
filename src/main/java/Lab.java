@@ -22,5 +22,8 @@ public class Lab {
         log.info("最小整数左移2位： {}", Integer.MIN_VALUE - 10 << 2);
 
 
+        log.info("最小值的取反：{}", -Integer.MIN_VALUE);
+
+
     }
 }
