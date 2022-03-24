@@ -21,6 +21,12 @@ public class Lab {
         log.info("最小整数： {}", Integer.MIN_VALUE);
         log.info("最小整数左移2位： {}", Integer.MIN_VALUE - 10 << 2);
 
+        Outer.Inner3 inner3 = new Outer().new Inner3();
+        inner3.accessOtherInner();
+
+        Outer.Inner2 inner2 = new Outer.Inner2();
+        inner2.accessOuter();
+
 
         log.info("最小值的取反：{}", -Integer.MIN_VALUE);
 

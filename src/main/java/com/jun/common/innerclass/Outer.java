@@ -19,14 +19,14 @@ public class Outer {
         }
     }
 
-    class Inner3 {
+    public class Inner3 {
         private int inP = 5;
         public void accessOtherInner() {
             log.info("访问外部类成员：{}",  new Inner().inP);
         }
     }
 
-    static class Inner2{
+    public static class Inner2{
         public void accessOuter() {
             log.info("aaaa: {}", new Outer().outP);
         }
