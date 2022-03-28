@@ -73,4 +73,17 @@ public class TestLab {
 
     }
 
+    @Test
+    public void testXor() {
+        int[] arr= {1,3,4,5,6};
+
+        int a = 3;
+        int b = 3;
+        log.info("a: {}, b: {}", arr[a] , arr[b]);
+        arr[a] = arr[a] ^ arr[b];
+        arr[b] = arr[a] ^ arr[b];
+        arr[a] = arr[a] ^ arr[b];
+        log.info("a: {}, b: {}", arr[a] , arr[b]);
+    }
+
 }
