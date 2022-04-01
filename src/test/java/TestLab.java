@@ -1,4 +1,6 @@
 import com.jun.arithmetic.Dichotomy;
+import com.jun.arithmetic.PrintBinary;
+import com.jun.interview.Q3_Min2Square;
 import com.jun.patterm.singleton.Mgr04;
 import com.jun.patterm.singleton.Mgr05;
 import com.jun.patterm.singleton.Mgr07;
@@ -84,6 +86,14 @@ public class TestLab {
         arr[b] = arr[a] ^ arr[b];
         arr[a] = arr[a] ^ arr[b];
         log.info("a: {}, b: {}", arr[a] , arr[b]);
+    }
+
+    @Test
+    public void testMin2Square() {
+        int n = -19;
+        PrintBinary.printBinary(n);
+        int r = Q3_Min2Square.tableSizeFor(n);
+        PrintBinary.printBinary(r);
     }
 
 }
