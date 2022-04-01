@@ -64,7 +64,7 @@ public class Dichotomy {
                 L = min + 1;
             }
         }
-        log.info("查找结果：{}", ans);
+        log.info("查找结果：{}, 数组的值是：{}", ans, arr[ans - 1 ]);
         return ans;
     }
 

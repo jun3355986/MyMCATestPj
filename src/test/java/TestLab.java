@@ -1,5 +1,8 @@
+import com.jun.arithmetic.BubblingSort;
 import com.jun.arithmetic.Dichotomy;
 import com.jun.arithmetic.PrintBinary;
+import com.jun.arithmetic.SelectSort;
+import com.jun.common.innerclass.SortUtil;
 import com.jun.interview.Q3_Min2Square;
 import com.jun.patterm.singleton.Mgr04;
 import com.jun.patterm.singleton.Mgr05;
@@ -7,7 +10,9 @@ import com.jun.patterm.singleton.Mgr07;
 import com.jun.patterm.singleton.Mgr08;
 import com.jun.patterm.strategy.*;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
+
 
 /**
  * @className: TestLab
@@ -22,8 +27,17 @@ public class TestLab {
     public void dichotomy() {
         int[] arr = {1,3, 4, 5,8, 10, 12, 16, 18, 19, 20, 24, 25, 25};
         int num = 17;
+        StopWatch stopWatch = new StopWatch("检测时间01");
+        stopWatch.start();
         Dichotomy.genericFind(arr, num);
+        stopWatch.stop();
+        log.info("genericFind时间：{}",stopWatch.getNanoTime());
+        stopWatch.reset();
+        stopWatch.start();
         Dichotomy.find(arr, num);
+        stopWatch.stop();
+        log.info("find时间：{}",stopWatch.getNanoTime());
+
     }
 
     @Test
@@ -96,4 +110,19 @@ public class TestLab {
         PrintBinary.printBinary(r);
     }
 
+
+    @Test
+    public void testSelectSort() {
+        int[] arr= {-1, 0,1,8,-5,2,5,5,5,29,20, 13, 13, 9,12};
+        SelectSort.sort(arr);
+        log.info("arr: {}", arr);
+    }
+
+    @Test
+    public void testBubblingSort() {
+        int[] arr= {-1, 0,1,8,-5,2,5,5,5,29,20, 13, 13, 9,12};
+        int[] arr2= {5,5,5,29,20, 13, 13, 9,12};
+        BubblingSort.sort(arr);
+        log.info("arr: {}", arr);
+    }
 }
