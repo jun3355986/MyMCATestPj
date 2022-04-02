@@ -65,4 +65,31 @@ public class Xor {
 
     }
 
+    /**
+     * 一个数组有一种数出现K次，其他数都出现了M次，M>1, K<M，找到出现k次的数，要求，额外空间复杂度为o(1)，时间复杂度为o(N)
+     */
+    public static int findKM(int[] arr, int k, int m) {
+
+
+        if (arr == null || arr.length < 2) {
+            return -1;
+        }
+        int[] sumArr = new int[32];
+
+        // 【技巧】把int转二进制表示
+        for (int n : arr) {
+            for (int i = 0; i <= 31; i++) {
+                sumArr[i] += 1 & (n >> i);
+            }
+        }
+
+        int theK = 0;
+        // 【技巧】把二进制转int表示
+        for(int i = 0; i <= 31; i++) {
+            theK += (sumArr[i] % m / k) << i;
+        }
+        return theK;
+
+    }
+
 }

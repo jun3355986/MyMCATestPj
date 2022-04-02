@@ -151,5 +151,10 @@ public class TestLab {
         log.info("res: {}", res);
     }
 
+    @Test
+    public void testFindKM() {
+        int[] arr= {-1,-1,8, 8,8, 8};
+        log.info("the K: {}", Xor.findKM(arr, 2, 4));
+    }
 
 }
