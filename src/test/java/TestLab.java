@@ -1,7 +1,4 @@
-import com.jun.arithmetic.BubblingSort;
-import com.jun.arithmetic.Dichotomy;
-import com.jun.arithmetic.PrintBinary;
-import com.jun.arithmetic.SelectSort;
+import com.jun.arithmetic.*;
 import com.jun.common.innerclass.SortUtil;
 import com.jun.interview.Q3_Min2Square;
 import com.jun.patterm.singleton.Mgr04;
@@ -22,6 +19,8 @@ import org.junit.Test;
  **/
 @Slf4j
 public class TestLab {
+
+    int[] arr= {-1, 0,1,8,-5,2,5,5,5,29,20, 13, 13, 9,12};;
 
     @Test
     public void dichotomy() {
@@ -125,4 +124,32 @@ public class TestLab {
         BubblingSort.sort(arr);
         log.info("arr: {}", arr);
     }
+
+    @Test
+    public void testInsertionSort() {
+        CommonSort.insertionSort(arr);
+        log.info("arr: {}", arr);
+    }
+
+    @Test
+    public void testFindOddInArr() {
+        int[] arr= {5,5,5, 5, 8, 8, 8, 8, 8};
+        log.info("res: {}", Xor.findOddInArr(arr));
+    }
+
+    @Test
+    public void testFindLastRightOne() {
+        int n = -28;
+        PrintBinary.printBinary(n);
+        PrintBinary.printBinary(Xor.findLastRightOne(n));
+    }
+
+    @Test
+    public void testFindTwoOdd() {
+        int[] arr= {5,5,5, 22,22, 5, 8,22, 8, 8,6,6, 3,3,3, 8,8, 8};
+        int[] res = Xor.findTwoOdd(arr);
+        log.info("res: {}", res);
+    }
+
+
 }
