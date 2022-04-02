@@ -157,4 +157,74 @@ public class TestLab {
         log.info("the K: {}", Xor.findKM(arr, 2, 4));
     }
 
+    @Test
+    public void testReverseLinkedList() {
+
+        Linked.Node nodeA = new Linked.Node("a", null);
+        Linked.Node nodeB = new Linked.Node("b", null);
+        nodeA.setNext(nodeB);
+        Linked.Node nodeC = new Linked.Node("c", null);
+        nodeB.setNext(nodeC);
+        Linked.Node nodeD = new Linked.Node("d", null);
+        nodeC.setNext(nodeD);
+        Linked.Node nodeE = new Linked.Node("e", null);
+        nodeD.setNext(nodeE);
+
+        Linked.printLinked(nodeA);
+
+        Linked.Node head = Linked.reverseLinkedList(nodeA);
+
+        Linked.printLinked(head);
+    }
+
+    @Test
+    public void testRemovedLinked() {
+        Linked.Node nodeA = new Linked.Node("a", null);
+        Linked.Node nodeA2 = new Linked.Node("a", null);
+        nodeA.setNext(nodeA2);
+        Linked.Node nodeB = new Linked.Node("b", null);
+        nodeA2.setNext(nodeB);
+        Linked.Node nodeC = new Linked.Node("c", null);
+        nodeB.setNext(nodeC);
+        Linked.Node nodeD = new Linked.Node("d", null);
+        nodeC.setNext(nodeD);
+        Linked.Node nodeE = new Linked.Node("e", null);
+        nodeD.setNext(nodeE);
+
+        Linked.printLinked(nodeA);
+
+        Linked.Node head = Linked.removedNode(nodeA, "d");
+
+        Linked.printLinked(head);
+
+    }
+
+    @Test
+    public void testDoubleLinkedQueue() {
+        Queue queue = new Queue();
+        queue.addFromHead("a");
+        queue.addFromHead("b");
+        queue.addFromHead("c");
+        queue.addFromHead("d");
+        queue.addFromHead("e");
+        queue.addFromHead("f");
+        queue.addFromHead("g");
+
+        Queue.printLinked(queue);
+
+        queue.popFromBottom();
+        Queue.printLinked(queue);
+
+        queue.popFromTop();
+        Queue.printLinked(queue);
+
+        queue.addFromBottom("ooo");
+        Queue.printLinked(queue);
+
+        queue.popFromTop();
+        Queue.printLinked(queue);
+
+
+    }
+
 }
