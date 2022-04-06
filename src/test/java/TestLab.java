@@ -1,9 +1,5 @@
 import com.jun.arithmetic.*;
-import com.jun.common.innerclass.SortUtil;
 import com.jun.interview.Q3_Min2Square;
-import com.jun.patterm.singleton.Mgr04;
-import com.jun.patterm.singleton.Mgr05;
-import com.jun.patterm.singleton.Mgr07;
 import com.jun.patterm.singleton.Mgr08;
 import com.jun.patterm.strategy.*;
 import lombok.extern.slf4j.Slf4j;
@@ -212,19 +208,150 @@ public class TestLab {
 
         Queue.printLinked(queue);
 
-        queue.popFromBottom();
+        queue.removeFromBottom();
         Queue.printLinked(queue);
 
-        queue.popFromTop();
+        queue.removeFromTop();
         Queue.printLinked(queue);
 
         queue.addFromBottom("ooo");
         Queue.printLinked(queue);
 
-        queue.popFromTop();
+        queue.removeFromTop();
         Queue.printLinked(queue);
 
 
+    }
+
+    @Test
+    public void testDoubleLinkedStack() {
+        Stack stack = new Stack(5);
+        stack.push("1");
+        stack.push("2");
+        stack.push("5");
+        stack.push("19");
+//        stack.push("0");
+//        stack.push("10");
+
+        Stack.printStack(stack);
+
+        stack.pop();
+        stack.pop();
+//        stack.pop();
+//        stack.pop();
+        stack.push("80");
+        stack.push("60");
+        stack.pop();
+        Stack.printStack(stack);
+
+    }
+
+    @Test
+    public void testStackArr() {
+        Stack stack = new Stack(5);
+        stack.pushArr("1");
+        stack.pushArr("2");
+        stack.pushArr("5");
+        stack.pushArr("19");
+        stack.pushArr("0");
+        stack.push("10");
+
+        Stack.printStackArr(stack);
+
+        stack.popArr();
+        stack.popArr();
+        stack.popArr();
+        stack.popArr();
+//        stack.pushArr("80");
+//        stack.pushArr("60");
+        stack.popArr();
+        Stack.printStackArr(stack);
+
+    }
+
+    @Test
+    public void testQueueArr() throws Exception {
+        Queue queue = new Queue(5);
+        queue.add("1");
+        queue.add("2");
+        queue.add("5");
+        queue.add("19");
+        queue.add("20");
+
+
+        queue.remove();
+        queue.remove();
+        queue.remove();
+        queue.add("22");
+        queue.add("5");
+        queue.remove();
+        queue.remove();
+        queue.remove();
+    }
+
+    @Test
+    public void testMinStack() throws Exception {
+        GetMinStack minStack = new GetMinStack();
+        minStack.push(10);
+        minStack.push(4);
+        minStack.push(5);
+        minStack.push(2);
+        minStack.push(20);
+
+        log.info("min: {}", minStack.getMin());
+
+        minStack.pop();
+        log.info("min: {}", minStack.getMin());
+        minStack.pop();
+        log.info("min: {}", minStack.getMin());
+        minStack.pop();
+        log.info("min: {}", minStack.getMin());
+        minStack.pop();
+        log.info("min: {}", minStack.getMin());
+
+    }
+
+    @Test
+    public void testStackQueue() {
+        QueueImpByTwoStack queue = new QueueImpByTwoStack(5);
+        queue.add(10);
+        queue.add(11);
+        queue.add(20);
+        queue.remove();
+        queue.remove();
+        queue.add(8);
+        queue.add(9);
+        queue.remove();
+        queue.remove();
+        queue.remove();
+        queue.remove();
+    }
+
+    @Test
+    public void testStackImpByTwoQueue() {
+        StackImpByTwoQueue stack = new StackImpByTwoQueue();
+        stack.push("8");
+        stack.push("40");
+        stack.push("30");
+        stack.push("24");
+        stack.push("29");
+
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        stack.push("23");
+        stack.push("16");
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        stack.pop();
+    }
+
+    @Test
+    public void testGetMax() {
+        log.info("arr: {}", arr);
+        log.info("max: {}", GetMax.getMax(arr));
     }
 
 }
