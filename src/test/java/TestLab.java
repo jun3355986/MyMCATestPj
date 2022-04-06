@@ -227,4 +227,13 @@ public class TestLab {
 
     }
 
+
+    @Test
+    public void testMergeSort() {
+        log.info("目标数组：{}", arr);
+        MergeSort.sort1Rec(arr);
+        log.info("归并排除结果：{}", arr);
+
+    }
+
 }
