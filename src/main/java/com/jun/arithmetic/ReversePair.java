@@ -23,28 +23,32 @@ public class ReversePair {
             return 0;
         }
         int mid = l + ((r-l)>>1);
-        return process(arr, l, mid) + process(arr, mid, r) + merge(arr, l, mid, r);
+        return process(arr, l, mid) + process(arr, mid + 1,  r) + merge(arr, l, mid, r);
     }
 
     public static int merge(int[] arr, int l, int m, int r) {
+        int[] help = new int[r - l + 1];
+        int i = help.length - 1;
         int lp = m;
         int rp = r;
         int count = 0;
-        int[] help = new int[r - l + 1];
-        int i = 0;
-        while (lp >= 0 && r >= m + 1) {
-            count += arr[lp] < arr[rp] ? 0 : 1;
-            help[i++] = arr[lp] < arr[rp] ? arr[lp++] : arr[rp++];
+        //【注意】左指针的边界是l，这里右边的条件按写错了，应该是rp，关于这些算法的变量，不要用相似的，搞一些区分度大的，不要排查错误搞晕自己
+        while (lp >= l && rp >m) {
+            //【注意】 如果左边大，有序对是rp - m
+            count += arr[lp] > arr[rp] ? (rp - m) : 0;
+            help[i--] = arr[lp] > arr[rp] ? arr[lp--] : arr[rp--];
         }
-        while (lp >= 0) {
-            help[i++] = arr[lp++];
+        while (lp >= l) {
+            help[i--] = arr[lp--];
         }
-        while (r >= m + 1) {
-            help[i++] = arr[rp++];
+        while (rp > m) {
+            help[i--] = arr[rp--];
         }
-        for(int j = 0; j < help.length; j++) {
-            arr[]help[j];
+        // 【注意】 help此时已填满，可以从0开始copy到arr
+        for (int j = 0; j < help.length; j++) {
+            arr[l + j] = help[j];
         }
+        return count;
 
     }
 

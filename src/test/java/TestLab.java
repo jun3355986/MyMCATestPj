@@ -370,4 +370,21 @@ public class TestLab {
 //        log.info("SmallSum结果：{}", SmallSum.comparator(arr));
     }
 
+    @Test
+    public void testArr() {
+        int[] help = new int[10];
+        help[1] = 10;
+        help[2] = 10;
+        help[3] = 10;
+        help[0] = 10;
+
+        log.info("数组大小：{}", help.length);
+    }
+
+    @Test
+    public void testReversePair() {
+        log.info("目标数组：{}", arr);
+        log.info("ReversePair结果：{}", ReversePair.count(arr));
+    }
+
 }
