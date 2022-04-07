@@ -358,9 +358,16 @@ public class TestLab {
     @Test
     public void testMergeSort() {
         log.info("目标数组：{}", arr);
-        MergeSort.sort1Rec(arr);
+//        MergeSort.sort1Rec(arr);
+        MergeSort.sort2NoRec(arr);
         log.info("归并排除结果：{}", arr);
+    }
 
+    @Test
+    public void testSmallSum() {
+        log.info("目标数组：{}", arr);
+        log.info("SmallSum结果：{}", SmallSum.sum(arr));
+//        log.info("SmallSum结果：{}", SmallSum.comparator(arr));
     }
 
 }

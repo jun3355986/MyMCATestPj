@@ -47,22 +47,14 @@ public class MergeSort {
         int index = 0;
         // 【注意】 边界，是<=，在有包含=的
         while( lp <= mid && rp <= r) {
-            if (arr[lp] < arr[rp]) {
-                helpArr[index++] = arr[lp++];
-            } else {
-                helpArr[index++] = arr[rp++];
-            }
+            helpArr[index++] = arr[lp] < arr[rp] ? arr[lp++] : arr[rp++];
         }
-
         while (lp <= mid) {
-            helpArr[index++] = arr[lp];
-            lp++;
+            helpArr[index++] = arr[lp++];
         }
         while (rp <= r) {
-            helpArr[index++] = arr[rp];
-            rp++;
+            helpArr[index++] = arr[rp++];
         }
-
         for(int i=0; i < helpArr.length; i++) {
             // 【注意】 是从比较那个位置起保存的
             arr[l + i] = helpArr[i];
@@ -70,6 +62,31 @@ public class MergeSort {
     }
 
     // 非递归方式
+    public static void sort2NoRec(int[] arr) {
+        int step = 1;
+        while (step < arr.length) {
+            int l = 0;
+            while(l < arr.length) {
+                // 左组往右找的时候，如果刚好只能找到够左组或者不够左组数量的时候，停止
+                if (step >= arr.length - l) {
+                    break;
+                }
+                // 找出中间位置
+                int m = l + step - 1;
+                // 找出右组的r位置，可能会超过数组长度
+                int r = Math.min(m + step , arr.length - 1);
+                // 归并
+                merge(arr, l, m , r);
+                // 前一组（左右组）完成排序，下一组继续开始
+                l = r + 1;
+            }
+            // 防止益处最大Integer.MAX_VALUE，因为数组长度大于Integer.MAX_VALUE/2的时候，以下步就会得出比Integer.MAX_VALUE的数
+            if (step > arr.length / 2) {
+                break;
+            }
+            step <<= 1;
+        }
+    }
 
 
 
