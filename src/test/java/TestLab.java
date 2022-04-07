@@ -394,4 +394,11 @@ public class TestLab {
         log.info("BiggerThanRightTwice结果：{}", BiggerThanRightTwice.comparator(arr));
     }
 
+    @Test
+    public void testCountOfRangeSum() {
+        log.info("目标数组：{}", arr);
+        log.info("在范围内的子数组数量：{}", CountOfRangeSum.count(arr, 5, 15));
+//        log.info("在范围内的子数组数量：{}", CountOfRangeSum.Comparator.countRangeSum(arr, 5, 15));
+    }
+
 }
