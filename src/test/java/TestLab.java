@@ -387,4 +387,11 @@ public class TestLab {
         log.info("ReversePair结果：{}", ReversePair.count(arr));
     }
 
+    @Test
+    public void testBiggerThanRightTwice() {
+        log.info("目标数组：{}", arr);
+//        log.info("ReversePair结果：{}", BiggerThanRightTwice.count(arr));
+        log.info("BiggerThanRightTwice结果：{}", BiggerThanRightTwice.comparator(arr));
+    }
+
 }
