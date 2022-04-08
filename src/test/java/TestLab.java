@@ -1,4 +1,5 @@
 import com.jun.arithmetic.*;
+import com.jun.common.innerclass.Outer;
 import com.jun.interview.Q3_Min2Square;
 import com.jun.patterm.singleton.Mgr08;
 import com.jun.patterm.strategy.*;
@@ -400,5 +401,15 @@ public class TestLab {
         log.info("在范围内的子数组数量：{}", CountOfRangeSum.count(arr, 5, 15));
 //        log.info("在范围内的子数组数量：{}", CountOfRangeSum.Comparator.countRangeSum(arr, 5, 15));
     }
+
+    @Test
+    public void testInnerClass() {
+        Outer outer = new Outer();
+        outer.accessInP();
+    }
+
+    // 第7种单例模式 静态内部类
+
+
 
 }
