@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 
 /**
  * @className: TestLab
@@ -415,10 +417,31 @@ public class TestLab {
 //        log.info("排序后返回：{}", PartitionAndQuickSort.partition(arr, 0, arr.length - 1));
 //        log.info("排序后返回：{}", PartitionAndQuickSort.netherlandsFlag(arr, 0, arr.length - 1));
 //        PartitionAndQuickSort.quickSort1(arr);
-        PartitionAndQuickSort.quickSort2(arr);
+//        PartitionAndQuickSort.quickSort2(arr);
+//        PartitionAndQuickSort.quickSort3(arr);
+        PartitionAndQuickSort.quickSort4(arr);
         log.info("排序后：{}", arr);
     }
 
+    @Test
+    public void testRandom() {
+        log.info("随机数：{}", Math.random());
+        log.info("随机数：{}", Math.random() * 11);
+        for (int i=0; i< 100; i++) {
+            log.info("随机数：{}", (int) (Math.random() * 11));
+        }
+    }
+
+    @Test
+    public void testComparator() {
+
+        Integer[] arr2 = {-1, 0,1,8,-5,2,5,5,5,29,20, 13, 13, 9,12};
+        Arrays.sort(arr2, (a,b) -> a - b);
+        // 【注意】打印时，如果数组是对象类型，要使用(Object)A, 不然不打印数据所有内容，只会打印最后一个
+        log.info("排序前：{}", (Object)arr2);
+        log.info("排序后：{}", (Object)arr2);
+
+    }
 
 
 }

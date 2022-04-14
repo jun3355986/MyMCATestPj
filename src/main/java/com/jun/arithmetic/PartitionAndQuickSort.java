@@ -2,6 +2,8 @@ package com.jun.arithmetic;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Stack;
+
 /**
  * @className: PartitionAndQuickSort
  * @description: TODO 类描述
@@ -103,6 +105,55 @@ public class PartitionAndQuickSort {
         // 【注意】没有移动时，m - 1可能会比l小
         process1(arr, l, range[0] - 1);
         process1(arr, range[1] + 1, r);
+    }
+
+    public static void quickSort3(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        process3(arr, 0, arr.length - 1);
+    }
+
+    private static void process3(int[] arr, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int[] range = netherlandsFlag(arr, l + (int)(Math.random() * (r-l + 1) ), r);
+        process1(arr, l, range[0] - 1);
+        process1(arr, range[1] + 1, r);
+    }
+
+    public static class Op{
+        public int l;
+        public int r;
+
+        public Op(int left, int right) {
+            l = left;
+            r = right;
+        }
+    }
+
+    public static void quickSort4(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        int N = arr.length;
+        swap(arr, (int)(Math.random() * N ), N - 1);
+        int[] equalArea = netherlandsFlag(arr, 0, N - 1);
+        int el = equalArea[0];
+        int er = equalArea[1];
+        Stack<Op> stack = new Stack<>();
+        stack.push(new Op(0, el - 1));
+        stack.push(new Op(er + 1, N - 1));
+        while (!stack.isEmpty()) {
+            Op op = stack.pop();
+            if (op.l < op.r) {
+                swap(arr, op.l + (int)(Math.random()*(op.r - op.l + 1)), op.r);
+                int[] equalArr =  netherlandsFlag(arr, op.l, op.r);
+                stack.push(new Op(op.l, equalArr[0] - 1));
+                stack.push(new Op(equalArr[1] + 1, op.r));
+            }
+        }
     }
 
 
