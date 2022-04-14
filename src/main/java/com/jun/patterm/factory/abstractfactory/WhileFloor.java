@@ -9,5 +9,8 @@ package com.jun.patterm.factory.abstractfactory;
 public class WhileFloor implements Floor {
 
 
+    @Override
+    public void desc() {
 
+    }
 }

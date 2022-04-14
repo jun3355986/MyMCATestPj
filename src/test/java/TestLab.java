@@ -409,6 +409,13 @@ public class TestLab {
     }
 
     // 第7种单例模式 静态内部类
+    @Test
+    public void TestPartitionAndQuickSort() {
+        log.info("目标数组：{}", arr);
+//        log.info("排序后返回：{}", PartitionAndQuickSort.partition(arr, 0, arr.length - 1));
+        log.info("排序后返回：{}", PartitionAndQuickSort.netherlandsFlag(arr, 0, arr.length - 1));
+        log.info("排序后：{}", arr);
+    }
 
 
 
