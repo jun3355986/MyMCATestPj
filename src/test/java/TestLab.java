@@ -413,7 +413,8 @@ public class TestLab {
     public void TestPartitionAndQuickSort() {
         log.info("目标数组：{}", arr);
 //        log.info("排序后返回：{}", PartitionAndQuickSort.partition(arr, 0, arr.length - 1));
-        log.info("排序后返回：{}", PartitionAndQuickSort.netherlandsFlag(arr, 0, arr.length - 1));
+//        log.info("排序后返回：{}", PartitionAndQuickSort.netherlandsFlag(arr, 0, arr.length - 1));
+        PartitionAndQuickSort.quickSort1(arr);
         log.info("排序后：{}", arr);
     }
 

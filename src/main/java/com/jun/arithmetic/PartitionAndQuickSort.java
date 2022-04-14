@@ -71,5 +71,22 @@ public class PartitionAndQuickSort {
         return new int[]{less + 1, more};
     }
 
+    public static void quickSort1(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        process1(arr, 0, arr.length - 1);
+    }
+
+    private static void process1(int[] arr, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int m = partition(arr, l, r);
+        // 【注意】没有移动时，m - 1可能会比l小
+        process1(arr, l, m - 1);
+        process1(arr, m + 1, r);
+    }
+
 
 }
