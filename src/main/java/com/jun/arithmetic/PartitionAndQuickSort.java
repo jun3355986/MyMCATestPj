@@ -88,5 +88,22 @@ public class PartitionAndQuickSort {
         process1(arr, m + 1, r);
     }
 
+    public static void quickSort2(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        process2(arr, 0, arr.length - 1);
+    }
+
+    private static void process2(int[] arr, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int[] range = netherlandsFlag(arr, l, r);
+        // 【注意】没有移动时，m - 1可能会比l小
+        process1(arr, l, range[0] - 1);
+        process1(arr, range[1] + 1, r);
+    }
+
 
 }
