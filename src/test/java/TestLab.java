@@ -443,5 +443,52 @@ public class TestLab {
 
     }
 
+    @Test
+    public void testHeap() {
+//        log.info("排序前：{}", arr);
+//        Heap.printTree(arr);
+        Heap.MaxHeap head = new Heap.MaxHeap(50);
+        head.push(10);
+        head.push(4);
+        head.push(19);
+        head.push(-8);
+        head.push(20);
+        head.push(5);
+        head.push(2);
+        head.push(-2);
+        Heap.printTree(head.getHeap());
+        log.info("弹出：{}", head.pop());
+        Heap.printTree(head.getHeap());
+        log.info("弹出：{}", head.pop());
+        Heap.printTree(head.getHeap());
+        head.push(18);
+        Heap.printTree(head.getHeap());
+        head.push(6);
+        Heap.printTree(head.getHeap());
+
+    }
+
+    @Test
+    public void testHeapSort() {
+        log.info("排序前：{}", arr);
+        HeapSort.sort(arr);
+        log.info("排序后：{}", arr);
+    }
+
+    @Test
+    public void testSortArrDistanceLessK() {
+        int[] arr = {1,3,7, 4, 2, 8, 5 ,6};
+        SortArrDistanceLessK.sort(arr, 4);
+        Heap.printTree(arr);
+    }
+
+    @Test
+    public void testCoverMax() {
+        int[][] lines = CoverMax.generateLines(30, 2, 50);
+        log.info("lines: {}", (Object) lines);
+//        log.info("最大覆盖数量：{}", CoverMax.maxCover1(lines));
+        log.info("最大覆盖数量：{}", CoverMax.maxCover2(lines));
+    }
+
 
 }
