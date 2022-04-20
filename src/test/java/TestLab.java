@@ -437,9 +437,11 @@ public class TestLab {
     public void testComparator() {
 
         Integer[] arr2 = {-1, 0,1,8,-5,2,5,5,5,29,20, 13, 13, 9,12};
-        Arrays.sort(arr2, (a,b) -> a - b);
-        // 【注意】打印时，如果数组是对象类型，要使用(Object)A, 不然不打印数据所有内容，只会打印最后一个
         log.info("排序前：{}", (Object)arr2);
+//        Arrays.sort(arr2, (a,b) -> a - b);
+        Arrays.sort(arr2, (a,b) -> b - a);
+        // 【注意】打印时，如果数组是对象类型，要使用(Object)A, 不然不打印数据所有内容，只会打印最后一个
+
         log.info("排序后：{}", (Object)arr2);
 
     }
@@ -535,6 +537,7 @@ public class TestLab {
         log.info("objArr: {}", (Object) objArr);
         log.info("bArr: {}", (Object) bArr);
     }
+
 
 
 }
