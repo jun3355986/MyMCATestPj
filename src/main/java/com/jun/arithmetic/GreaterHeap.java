@@ -44,11 +44,19 @@ public class GreaterHeap<T> {
     }
 
     public void push(T obj) {
-
+        heap.add(obj);
+        indexMap.put(obj, heapSize);
+        heapify(heapSize++);
     }
 
     public T pop() {
-
+        T ans = peek();
+        swap(0, heapSize - 1);
+        // 记得删除弹出的元素，避免内容泄漏
+        indexMap.remove(ans);
+        heap.remove(--heapSize);
+        heapify(0);
+        return ans;
     }
 
     public void heapify(int k) {
