@@ -8,6 +8,7 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -488,6 +489,51 @@ public class TestLab {
         log.info("lines: {}", (Object) lines);
 //        log.info("最大覆盖数量：{}", CoverMax.maxCover1(lines));
         log.info("最大覆盖数量：{}", CoverMax.maxCover2(lines));
+    }
+
+    @Test
+    public void testGreaterHeap() {
+        GreaterHeap<Integer> greaterHeap = new GreaterHeap<>((a, b) -> a -b);
+        greaterHeap.push(10);
+        greaterHeap.push(13);
+        greaterHeap.push(4);
+        greaterHeap.push(2);
+        greaterHeap.push(5);
+        greaterHeap.push(7);
+        greaterHeap.push(23);
+        Heap.printTree(greaterHeap.getAllElements());
+        greaterHeap.pop();
+        greaterHeap.pop();
+        Heap.printTree(greaterHeap.getAllElements());
+        greaterHeap.push(32);
+        greaterHeap.push(70);
+        greaterHeap.push(40);
+        greaterHeap.push(51);
+        greaterHeap.push(78);
+        greaterHeap.push(55);
+        Heap.printTree(greaterHeap.getAllElements());
+        greaterHeap.remove(70);
+        Heap.printTree(greaterHeap.getAllElements());
+
+        greaterHeap.remove(78);
+        Heap.printTree(greaterHeap.getAllElements());
+        greaterHeap.remove(5);
+        Heap.printTree(greaterHeap.getAllElements());
+
+    }
+
+    @Test
+    public void testListToArr() {
+        Integer[] objArr = new  Integer[10];
+        objArr[0] = 10;
+        objArr[1] = 12;
+        objArr[2] = 14;
+        objArr[3] = 15;
+        objArr[4] = 100;
+
+        int[] bArr = Arrays.stream(objArr).mapToInt(num -> num == null ? 0 : num).toArray();
+        log.info("objArr: {}", (Object) objArr);
+        log.info("bArr: {}", (Object) bArr);
     }
 
 

@@ -4,6 +4,7 @@ import com.jun.common.innerclass.SortUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @className: Heap
@@ -136,6 +137,7 @@ public class Heap {
     }
 
     public static void printTree(int[] arr) {
+        log.info("-------------------start--------------------");
         if (arr == null){
             return;
         }
@@ -150,6 +152,15 @@ public class Heap {
             from = to ;
             ++layer;
         }
+        log.info("-----------------end----------------------");
+    }
+
+    public static void printTree(Integer[] arr) {
+        printTree(Arrays.stream(arr).mapToInt(num -> num == null ? 0 : num).toArray());
+    }
+
+    public static void printTree(List<Integer> arr) {
+        printTree(arr.toArray(new Integer[0]));
     }
 
 

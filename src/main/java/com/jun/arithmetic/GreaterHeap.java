@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @decription: 加强堆 这里做小根堆
@@ -46,7 +47,7 @@ public class GreaterHeap<T> {
     public void push(T obj) {
         heap.add(obj);
         indexMap.put(obj, heapSize);
-        heapify(heapSize++);
+        heapInsert(heapSize++);
     }
 
     public T pop() {
@@ -59,9 +60,36 @@ public class GreaterHeap<T> {
         return ans;
     }
 
+    public void remove(T obj) {
+        int index = indexMap.get(obj);
+        T replace = heap.get(heapSize - 1);
+        indexMap.remove(obj);
+        // 前面已保存最后一个，这里删除并减少heap大小没问题
+        heap.remove(--heapSize);
+        if (obj != replace) {
+            // 把刚才删除的最后一个替换到删除的目标位置上
+            indexMap.put(replace, index);
+            heap.set(index, replace);
+            resign(replace);
+        }
+    }
+
+    public void resign(T object) {
+        heapify(indexMap.get(object));
+        heapInsert(indexMap.get(object));
+    }
+
+    public List<T> getAllElements() {
+        return new ArrayList<>(heap);
+    }
+
+    /**
+     * o(logN)
+     * @param k
+     */
     public void heapify(int k) {
         int left = k * 2 + 1;
-        while (left <= heapSize ) {
+        while (left < heapSize ) {
             // 【注意】这里比较是黑盒，注意比较器的参数顺序和结果中选择第几个，一般比较结果判断使用相同符号去判断
             int best = left + 1 < heapSize && comp.compare(heap.get(left + 1), heap.get(left)) < 0 ? left + 1: left;
             best = comp.compare(heap.get(k), heap.get(best)) < 0 ? k : best ;
@@ -74,6 +102,10 @@ public class GreaterHeap<T> {
         }
     }
 
+    /**
+     * o(logN)
+     * @param k
+     */
     public void heapInsert(int k) {
         while ((k - 1) / 2 >= 0 && comp.compare(heap.get(k), heap.get((k - 1) / 2)) < 0 ) {
             swap((k - 1) / 2, k);
