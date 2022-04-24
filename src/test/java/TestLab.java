@@ -3,12 +3,14 @@ import com.jun.common.innerclass.Outer;
 import com.jun.interview.Q3_Min2Square;
 import com.jun.patterm.singleton.Mgr08;
 import com.jun.patterm.strategy.*;
+import com.jun.thread.FiveThreadCreate;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
 
 
@@ -606,5 +608,24 @@ public class TestLab {
         Thread.sleep(7000);
     }
 
+    @Test
+    public void testThreadCreate() throws ExecutionException, InterruptedException {
+        FiveThreadCreate.type1();
+        FiveThreadCreate.type2();
+        FiveThreadCreate.type3();
+        FiveThreadCreate.type4();
+        FiveThreadCreate.type5();
+
+        Thread.sleep(7000);
+
+    }
+
+    @Test
+    public void testThreadStop() {
+        new Thread(() -> {
+            log.info("设置线程停止啊");
+            Thread.stop();
+        }).start();
+    }
 
 }
