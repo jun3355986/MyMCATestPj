@@ -538,6 +538,34 @@ public class TestLab {
         log.info("bArr: {}", (Object) bArr);
     }
 
+    @Test
+    public void testMacro() {
+        String s1 = "abcd";
+        String s2 = "ab" + "cd";
+        log.info("s1==s2:{}", s1 == s2);
+
+        String s3 = "ab";
+        String s4 = "cd";
+        String s5 = s3 + s4;
+        log.info("s1==s2:{}", s1 == s5);
+
+
+        String key="doiijwey90780203u98723DWsw2389";
+        String timestamp= "1645454234";
+        String nonce="oiaduowefuoupfbqer";
+        String encrypt="CtJyyv2PRkrwuJAxNc/aD+g5Q437==";
+        String[] array = new String[]{key, timestamp, nonce, encrypt};
+        // 字符串排序
+        Arrays.sort(array);
+        String str = "";
+        for (String s: array) {
+            str += "\"" + s + "\" + ";
+        }
+        log.info("{}",(Object) array);
+        log.info("{}",str);
+
+    }
+
 
 
 }
