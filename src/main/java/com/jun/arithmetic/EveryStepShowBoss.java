@@ -114,7 +114,7 @@ public class EveryStepShowBoss {
             Customer c = cands.get(0);
             c.enterTime = time;
             daddy.add(c);
-            cands.remove(c);
+            cands.remove(0);
         } else {
             if (cands.get(0).buy > daddy.get(0 ).buy) {
                 Customer oldDaddy = daddy.get(0);
@@ -242,14 +242,14 @@ public class EveryStepShowBoss {
             List<Integer> cur1 = ans1.get(i);
             List<Integer> cur2 = ans2.get(i);
             if (cur1.size() != cur2.size()) {
-                log.info("出错位置：{}, cur1: {}, cur2: {}", i, cur1, cur2);
+                log.info("大小不同，出错位置：{}, cur1: {}, cur2: {}", i, cur1, cur2);
                 return false;
             }
             cur1.sort((a, b) -> a - b);
             cur2.sort((a, b) -> a - b);
             for (int j = 0; j < cur1.size(); j++) {
                 if (!cur1.get(j).equals(cur2.get(j))) {
-                    log.info("出错位置：{}, cur1: {}, cur2: {}", i, cur1, cur2);
+                    log.info("内容不同，出错位置：{}, cur1: {}, cur2: {}", i, cur1, cur2);
                     return false;
                 }
             }

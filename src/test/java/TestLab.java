@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 /**
@@ -566,6 +567,44 @@ public class TestLab {
 
     }
 
+    @Test
+    public void testJuc() {
+        ReentrantLock lock = new ReentrantLock();
+        lock.lock();
+        arr[0] = 100;
+        lock.unlock();
+    }
+
+    @Test
+    public void testThreadLocal() throws InterruptedException {
+        ThreadLocal<Integer> t1 = new ThreadLocal<>();
+        log.info("{} , before t1: {}", Thread.currentThread(), t1.get());
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000);
+                log.info("{} , before t1: {}", Thread.currentThread(), t1.get());
+                t1.set(190);
+                log.info("{} , after t1: {}", Thread.currentThread(), t1.get());
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        new Thread(() -> {
+            try {
+                log.info("{} , before t1: {}", Thread.currentThread(), t1.get());
+                Thread.sleep(1000);
+                log.info("{} , after t1: {}", Thread.currentThread(), t1.get());
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+        log.info("{} , after t1: {}", Thread.currentThread(), t1.get());
+
+        Thread.sleep(7000);
+    }
 
 
 }
