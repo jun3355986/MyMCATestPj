@@ -623,8 +623,7 @@ public class TestLab {
     @Test
     public void testThreadStop() {
         new Thread(() -> {
-            log.info("设置线程停止啊");
-            Thread.stop();
+            log.info("设置线程停止啊");;
         }).start();
     }
 
