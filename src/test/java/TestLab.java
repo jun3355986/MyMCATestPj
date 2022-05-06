@@ -8,7 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
@@ -625,6 +628,28 @@ public class TestLab {
         new Thread(() -> {
             log.info("设置线程停止啊");;
         }).start();
+    }
+
+    @Test
+    public void testP() {
+
+        Date date = getOfMonthOneDay(new Date());
+        log.info("date: {}", date);
+        String dateStr = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(date);
+        log.info("dateStr: {}", dateStr);
+    }
+
+    public static Date getOfMonthOneDay(Date date){
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.DAY_OF_MONTH,1);
+        cal.set(Calendar.SECOND,0);
+        cal.set(Calendar.MINUTE,0);
+        cal.set(Calendar.HOUR_OF_DAY,0);
+        cal.set(Calendar.MILLISECOND,0);
+        cal.add(Calendar.MONTH,1);
+        return cal.getTime();
     }
 
 }
