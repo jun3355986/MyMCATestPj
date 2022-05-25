@@ -5,14 +5,19 @@ import com.jun.patterm.singleton.Mgr08;
 import com.jun.patterm.strategy.*;
 import com.jun.thread.FiveThreadCreate;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -650,6 +655,42 @@ public class TestLab {
         cal.set(Calendar.MILLISECOND,0);
         cal.add(Calendar.MONTH,1);
         return cal.getTime();
+    }
+
+    @Test
+    public void testXX() {
+        Date createDate;
+        List<Long> projectIdList = new ArrayList<>();
+        String param = "2020-05-20,";
+        String[] params = param.split(",");
+        for (String s : params) {
+            if (!StringUtils.isNumeric(s)) {
+                log.info("date: [{}]", s);
+                createDate = parseDate(s);
+            } else {
+                log.info("long: [{}]", s);
+                projectIdList.add(Long.parseLong(s));
+            }
+        }
+        if (projectIdList.isEmpty()) {
+            log.info("empty................");
+        } else {
+            log.info("no empty");
+        }
+    }
+
+    private Date parseDate(String param) {
+        return Optional.ofNullable(param)
+                .filter(StringUtils::isNotBlank)
+                .map(source -> {
+                    try {
+                        return DateUtils.parseDate(source, "yyyy-MM-dd");
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                })
+                .orElseGet(Date::new);
     }
 
 }
