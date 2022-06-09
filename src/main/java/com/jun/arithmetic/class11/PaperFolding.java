@@ -1,4 +1,4 @@
-package com.jun.arithmetic;
+package com.jun.arithmetic.class11;
 
 /**
  * @className: Code07_PaperFolding
@@ -6,7 +6,7 @@ package com.jun.arithmetic;
  * @author: jdt
  * @date: 2022/6/9 08:52
  **/
-public class Code07_PaperFolding {
+public class PaperFolding {
 
 
     public static void printAllFoldings(int N) {
