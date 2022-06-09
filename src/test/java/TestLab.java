@@ -1,4 +1,6 @@
 import com.jun.arithmetic.*;
+import com.jun.arithmetic.Queue;
+import com.jun.arithmetic.Stack;
 import com.jun.common.innerclass.Outer;
 import com.jun.interview.Q3_Min2Square;
 import com.jun.patterm.singleton.Mgr08;
@@ -9,10 +11,7 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -624,10 +623,22 @@ public class TestLab {
     }
 
     @Test
-    public void testThreadStop() {
-        new Thread(() -> {
-            log.info("设置线程停止啊");;
-        }).start();
+    public void testThreadStop() throws InterruptedException {
+        Thread t1 = new Thread(() -> {
+            log.info("设置线程停止啊");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        t1.start();
+        t1.stop();
+        t1.resume();
+        t1.suspend();
+
+        Thread.sleep(7000);
+
     }
 
     @Test
@@ -650,6 +661,12 @@ public class TestLab {
         cal.set(Calendar.MILLISECOND,0);
         cal.add(Calendar.MONTH,1);
         return cal.getTime();
+    }
+
+    @Test
+    public void testSet() {
+        Set<String> set = new HashSet<>();
+        log.info("{}-{}-{}", set.add("rr"), set.add("tt"), set.add("tt"));
     }
 
 }
