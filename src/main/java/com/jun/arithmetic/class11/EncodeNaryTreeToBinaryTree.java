@@ -1,5 +1,6 @@
 package com.jun.arithmetic.class11;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,5 +59,22 @@ public class EncodeNaryTreeToBinaryTree {
             cur.left = en(child.children);
         }
         return head;
+    }
+
+    public Node decode(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        return new Node(root.val, de(root.left));
+    }
+
+    public List<Node> de(TreeNode root) {
+        List<Node> children = new ArrayList<>();
+        while (root != null) {
+            Node cur = new Node(root.val, de(root.left));
+            children.add(cur);
+            root = root.right;
+        }
+        return children;
     }
 }
