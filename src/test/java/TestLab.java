@@ -715,4 +715,9 @@ public class TestLab {
                 .orElseGet(Date::new);
     }
 
+    @Test
+    public void testAssert() {
+
+    }
+
 }
