@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * @className: Code02_IsBST
- * @description: TODO 类描述
+ * @description: 搜索二叉树
  * @author: jdt
  * @date: 2022/7/14 21:36
  **/
@@ -74,6 +74,7 @@ public class Code02_IsBST {
             if (!leftInfo.isBST || leftInfo.max >= n.value) {
                 isBST = false;
             }
+            // 注意这里的最小值和最大值，要在左中右中比较出来
             min = Math.min(leftInfo.min, min);
             max = Math.max(leftInfo.max, max);
         }

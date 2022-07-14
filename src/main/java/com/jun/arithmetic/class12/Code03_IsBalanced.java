@@ -2,7 +2,7 @@ package com.jun.arithmetic.class12;
 
 /**
  * @className: Code03_IsBalanced
- * @description: TODO 类描述
+ * @description: 平衡二叉树
  * @author: jdt
  * @date: 2022/7/14 12:56
  **/
