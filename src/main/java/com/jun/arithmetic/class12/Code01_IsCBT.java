@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * @author: jdt
  * @date: 2022/6/10 08:19
  **/
-public class IsCBT {
+public class Code01_IsCBT {
 
     public static class Node {
         public int value;
