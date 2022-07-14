@@ -37,10 +37,10 @@ public class IsCBT {
                 return false;
             }
             if (l != null) {
-                queue.add(r);
+                queue.add(l);
             }
             if (r != null) {
-                queue.add(l);
+                queue.add(r);
             }
             if (l == null || r == null) {
                 leaf = true;
@@ -48,6 +48,61 @@ public class IsCBT {
         }
         return true;
     }
+
+    public static boolean isCBT2(Node head) {
+        if (head == null) {
+            return true;
+        }
+        return process(head).isCBT;
+    }
+
+    public static class Info {
+        public boolean isFull;
+        public boolean isCBT;
+        public int height;
+
+        public Info(boolean full, boolean cbt, int h) {
+            isFull = full;
+            isCBT = cbt;
+            height = h;
+        }
+    }
+
+    public static Info process(Node X) {
+        if (X == null) {
+            return new Info(true, true, 0);
+        }
+        Info leftInfo = process(X.left);
+        Info rightInfo = process(X.right);
+
+        int height = Math.max(leftInfo.height, rightInfo.height) + 1;
+        boolean isFull = false;
+        boolean isCBT = false;
+
+        if ((leftInfo.isFull && rightInfo.isFull)
+                && (leftInfo.height == rightInfo.height)) {
+            isFull = true;
+            isCBT = true;
+        }
+
+        else if ((leftInfo.isCBT && rightInfo.isFull)
+                && (leftInfo.height == rightInfo.height + 1)) {
+            isCBT = true;
+        }
+
+        else if ((leftInfo.isFull && rightInfo.isFull)
+                && (leftInfo.height == rightInfo.height + 1)) {
+            isCBT = true;
+        }
+
+        else if ((leftInfo.isFull && rightInfo.isCBT)
+                && (leftInfo.height == rightInfo.height )) {
+            isCBT = true;
+        }
+
+        return new Info(isFull, isCBT, height);
+    }
+
 
     public static Node generateRandomBST(int maxLevel, int maxValue) {
         return generate(1, maxLevel, maxValue);
@@ -69,8 +124,11 @@ public class IsCBT {
         int testTimes = 1000000;
         for (int i = 0; i < testTimes; i++) {
             Node head = generateRandomBST(maxLevel, maxValue);
-            //if (isCBT1())
+            if (isCBT1(head) != isCBT2(head)) {
+                System.out.println("Oops!");
+            }
         }
+        System.out.println("finish!");
     }
 
 }
