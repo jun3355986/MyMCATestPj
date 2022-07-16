@@ -441,7 +441,7 @@ public class TestLab {
     @Test
     public void testRandom() {
         log.info("随机数：{}", Math.random());
-        log.info("随机数：{}", Math.random() * 11);
+        log.info("随机数：{}", (int)Math.random() * 11);
         for (int i=0; i< 100; i++) {
             log.info("随机数：{}", (int) (Math.random() * 11));
         }
