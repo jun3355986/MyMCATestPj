@@ -8,7 +8,10 @@ package com.jun.arithmetic.class14;
  */
 public class Code01_Light {
 
-    public static int leastLight(String road) {
+    // todo minLight1方法待补充
+
+
+    public static int minLight2(String road) {
         char[] str = road.toCharArray();
         int light = 0;
         int i = 0;
