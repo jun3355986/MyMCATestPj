@@ -718,30 +718,7 @@ public class TestLab {
                 .orElseGet(Date::new);
     }
 
-    class TestC {
-        public NoticeType type;
-        public String str;
-        public TestC(NoticeType type, String str) {
-            this.type = type;
-            this.str = str;
-        }
-    }
 
-    @Test
-    public void testEnumComparator() {
-        log.info("比较结果： {}", NoticeType.getComparator().compare(NoticeType.BILL, NoticeType.SYSTEM));
-        List<TestC> list = new ArrayList<>();
-        list.add(new TestC(NoticeType.SYSTEM, "虎"));
-        list.add(new TestC(NoticeType.BILL, "龙"));
-        list.add(new TestC(NoticeType.CHARGE, "牛"));
-        log.info("list before: {}", JSONObject.toJSONString(list));
-//        list = list.stream().sorted(Comparator.comparingInt(c -> c.type.index())).collect(Collectors.toList());
-        list = list.stream().sorted(Comparator.comparingInt(c -> c.type.ordinal())).collect(Collectors.toList());
-        log.info("list after: {}", JSONObject.toJSONString(list));
-//        log.info("{}", JSONObject.toJSONString(new TestC(NoticeType.SYSTEM, "虎")));
-//        log.info("{}", JSONObject.toJSONString(NoticeType.SYSTEM));
-//        NoticeType.SYSTEM.compareTo(NoticeType.SYSTEM)
-    }
 
 
     @Test
@@ -752,6 +729,21 @@ public class TestLab {
             for(int j = i + 1; j < M.length; j++) {
                 log.info("i:{}, j: {}", i , j);
             }
+        }
+    }
+
+    @Test
+    public void testArr01() {
+        int[][] positions = new int[5][3];
+        int num = 0;
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 3; j++) {
+                positions[i][j] = num++;
+            }
+        }
+        int index = 0;
+        for (int[] position : positions ) {
+            log.info("index: {}, p0: {}, p1: {}", index++, position[0], position[1]);
         }
     }
 }
