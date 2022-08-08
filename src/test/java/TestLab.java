@@ -1,3 +1,4 @@
+import com.alibaba.fastjson.JSONObject;
 import com.jun.arithmetic.*;
 import com.jun.arithmetic.Queue;
 import com.jun.arithmetic.Stack;
@@ -18,11 +19,13 @@ import java.util.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
 
 
 /**
@@ -715,9 +718,40 @@ public class TestLab {
                 .orElseGet(Date::new);
     }
 
-    @Test
-    public void testAssert() {
-
+    class TestC {
+        public NoticeType type;
+        public String str;
+        public TestC(NoticeType type, String str) {
+            this.type = type;
+            this.str = str;
+        }
     }
 
+    @Test
+    public void testEnumComparator() {
+        log.info("比较结果： {}", NoticeType.getComparator().compare(NoticeType.BILL, NoticeType.SYSTEM));
+        List<TestC> list = new ArrayList<>();
+        list.add(new TestC(NoticeType.SYSTEM, "虎"));
+        list.add(new TestC(NoticeType.BILL, "龙"));
+        list.add(new TestC(NoticeType.CHARGE, "牛"));
+        log.info("list before: {}", JSONObject.toJSONString(list));
+//        list = list.stream().sorted(Comparator.comparingInt(c -> c.type.index())).collect(Collectors.toList());
+        list = list.stream().sorted(Comparator.comparingInt(c -> c.type.ordinal())).collect(Collectors.toList());
+        log.info("list after: {}", JSONObject.toJSONString(list));
+//        log.info("{}", JSONObject.toJSONString(new TestC(NoticeType.SYSTEM, "虎")));
+//        log.info("{}", JSONObject.toJSONString(NoticeType.SYSTEM));
+//        NoticeType.SYSTEM.compareTo(NoticeType.SYSTEM)
+    }
+
+
+    @Test
+    public void testFor() {
+        int[][] M = new int[6][8];
+        log.info("arr size: {}", M.length);
+        for(int i = 0; i < M.length; i++) {
+            for(int j = i + 1; j < M.length; j++) {
+                log.info("i:{}, j: {}", i , j);
+            }
+        }
+    }
 }
