@@ -19,7 +19,19 @@ public class DFS {
         HashSet<Node> set = new HashSet<>();
         stack.add(node);
         set.add(node);
-        System.ou
+        System.out.print(node.value);
+        while(!stack.isEmpty()) {
+            Node cur = stack.pop();
+            for (Node next : cur.nexts) {
+                if (!set.contains(next)) {
+                    set.add(next);
+                    stack.push(cur);
+                    stack.push(next);
+                    System.out.println(next.value);
+                    break;
+                }
+            }
+        }
 
     }
 
