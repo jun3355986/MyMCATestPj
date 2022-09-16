@@ -78,7 +78,19 @@ public class Kruskal {
     public static Set<Edge> kruskalMST(Graph graph) {
         UnionFind unionFind = new UnionFind();
         unionFind.makeSets(graph.nodes.values());
-
+        PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(new EdgeComparator());
+        for (Edge edge : graph.edges) {
+            priorityQueue.add(edge);
+        }
+        Set<Edge> result = new HashSet<>();
+        while (!priorityQueue.isEmpty()) {
+            Edge edge = priorityQueue.poll();
+            if (!unionFind.isSameSet(edge.from, edge.to)) {
+                result.add(edge);
+                unionFind.union(edge.from, edge.to);
+            }
+        }
+        return result;
     }
 
 
