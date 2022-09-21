@@ -72,7 +72,7 @@ public class Prim {
             }
             visit[minIndex] = true;
             sum += minPath;
-            for (int j ; j < size; j++) {
+            for (int j =0 ; j < size; j++) {
                 // 被访问过的点不处理（因为不需要比较），选择前一个集合最小的边对应的点，并判断这个点的nexts到各个点的边是否小于现有的，是就选择，不是就跳过
                 if (!(visit[j]) && distances[j] < graph[minIndex][j] ) {
                     distances[j] = graph[minIndex][j];
